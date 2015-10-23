@@ -566,9 +566,10 @@ void ExtendedTabWidgetPrivate::checkPassword(QString password) {
         Q_Q(ExtendedTabWidget);
         bool result;
         if (bIgnoreCase)
-            result = (password.toLower() == Base64::decode(mPassword).toLower());
+            result = (password.toLower() == mPassword.toLower());
         else
-            result = (password == Base64::decode(mPassword));
+            result = (password == mPassword);
+
         if (result) {
             emit q->loggedIn();
             bLoggedIn = true;
@@ -590,7 +591,7 @@ void ExtendedTabWidgetPrivate::checkPassword(QString username, QString password)
                 bLoggedIn = false;
                 return;
             }
-            bool result = (password == Base64::decode(pw));
+            bool result = (password == pw);
 
             if (result) {
                 emit q->loggedIn();
@@ -611,7 +612,7 @@ void ExtendedTabWidgetPrivate::checkPassword(QString username, QString password)
                 QString id = it.next();
                 if (id.toLower() == un) {
                     unFound = true;
-                    QString storedPw = Base64::decode(mPasswords.value(id));
+                    QString storedPw = mPasswords.value(id);
                     if (storedPw.toLower() == pw) {
                         emit q->loggedIn();
                         sUsername = un;
@@ -641,11 +642,11 @@ bool ExtendedTabWidgetPrivate::isLoggedIn() {
 }
 
 void ExtendedTabWidgetPrivate::addPassword(QString password) {
-    mPassword = Base64::encode(password.toLatin1());
+    mPassword = password.toLatin1();
 }
 
 void ExtendedTabWidgetPrivate::addPassword(QString id, QString password) {
-    mPasswords.insert(id, Base64::encode(password.toLatin1()));
+    mPasswords.insert(id, password.toLatin1());
 }
 
 void ExtendedTabWidgetPrivate::nextSecond() {

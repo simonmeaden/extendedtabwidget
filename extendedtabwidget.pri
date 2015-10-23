@@ -1,8 +1,6 @@
 
 INCLUDEPATH += $$PWD/src
 
-include(osdab/base64.pri)
-
 HEADERS += \
     $$PWD/ExtendedTabWidget \
     $$PWD/extendedtabwidget_global.h \
