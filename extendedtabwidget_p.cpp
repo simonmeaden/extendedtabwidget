@@ -1,6 +1,5 @@
 #include "extendedtabwidget_p.h"
 #include "extendedtabwidget.h"
-#include "osdab/base64.h"
 
 LoginDialogPrivate::LoginDialogPrivate(LoginDialog *parent) :
     q_ptr(parent) {

@@ -1,5 +1,5 @@
 
-INCLUDEPATH += $$PWD/src
+INCLUDEPATH += $$PWD
 
 HEADERS += \
     $$PWD/ExtendedTabWidget \
